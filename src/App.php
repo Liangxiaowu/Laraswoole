@@ -7,9 +7,10 @@ class App
 {
     public function run($argv){
         define('ROOT_PATH',dirname(dirname(dirname(dirname(__DIR__)))));
-        define('SERVICE_PATH',ROOT_PATH.'/service');
-        define('APP_PATH',ROOT_PATH.'/app');
-        define('CONFIG_PATH',ROOT_PATH.'/config');
+        define('SERVICE_PATH',ROOT_PATH.'/vendor/xiaowu/laraswoole');
+        define('ROUTE_PATH',ROOT_PATH.'/routes'); // 路由目录
+        define('APP_PATH',ROOT_PATH.'/app');    // app目录
+        define('CONFIG_PATH',ROOT_PATH.'/config');  // 配置目录
         try{
             switch ($argv[1]){
                 case 'start':

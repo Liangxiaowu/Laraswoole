@@ -105,6 +105,7 @@ class HttpServer {
         $laravelResponse = $kernel->handle(
             $laravelRequest = Request::capture()
         );
+
         $response->header("Content-Type", "application/json; charset=utf-8");
         $laravelResponse->send();
 
@@ -112,12 +113,12 @@ class HttpServer {
         $res = ob_get_contents();//获取缓存区的内容
         ob_end_clean();//清除缓存区
         $response ->end($res);
-        echo "{$request->fd}服务连接上了";
+        echo "{$request->fd}服务连接上了".PHP_EOL;
     }
 
     // 关闭客户端连接
     public function close($fd){
-        echo '关闭客户端';
+        echo $fd.'关闭客户端'.PHP_EOL;
     }
 
 
