@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 class HttpServer {
     private  $server;
     private $setting;
+    private $localhost;
     public function run()
     {
         $config =  RunConfig::get_instance();
         $config->load(); //载入配置文件
 
         $this->setting=$config->get('http');
-
+        $this->localhost = $config ->get('localhost');
         $this->server = new Server($this->setting['host'], $this->setting['port']);
 
         $this->server ->set($this->setting['set_config']);
@@ -28,8 +29,10 @@ class HttpServer {
 
     public function start(){
         echo 'App running at:'.PHP_EOL;
-        echo  '- Local:   http://127.0.0.1:'.$this->setting['port'];
-
+        echo  '- Local:   http://127.0.0.1:'.$this->setting['port'].PHP_EOL;
+        if($this->localhost){
+            echo ' - Network:   http://'.$this->localhost.':'.$this->setting['port'].PHP_EOL;
+        }
 
         $reload = Reload::get_instance();
         // 热重启
