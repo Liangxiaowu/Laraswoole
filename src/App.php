@@ -5,8 +5,7 @@ use Laraswoole\Core\HttpServer;
 
 class App
 {
-    public function run($argv, $rootPath){
-        define('ROOT_PATH',$rootPath);
+    public function run($argv){
         define('SERVICE_PATH',ROOT_PATH.'/vendor/xiaowu/laraswoole');
         define('ROUTE_PATH',ROOT_PATH.'/routes'); // 路由目录
         define('APP_PATH',ROOT_PATH.'/app');    // app目录
